@@ -8,7 +8,8 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")))
-//app.use();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/ChattingApp')
@@ -23,7 +24,15 @@ app.get('/chats', async (req, res) => {
 })
 
 
+app.get('/chat/new', (req, res) => {
+    res.render("insert");
+})
 
+app.post('/chats', async(req, res) =>{
+    const data =  req.body;
+    await Chat.insertOne(data)
+    res.redirect('/chats');
+})
 
 
 
