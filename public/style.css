@@ -1,0 +1,29 @@
+.row {
+    display: flex;
+
+}
+
+.card {
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    box-shadow: 3px 4px 13px black;
+    border-radius: 7%;
+    margin: 2%;
+    padding: 3rem;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+button{
+    background-color: blue;
+    border: none;
+    padding: 1em 1em;
+    border-radius: 4px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
