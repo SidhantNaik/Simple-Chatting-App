@@ -1,6 +1,7 @@
 .row {
     display: flex;
-
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .card {
@@ -9,21 +10,34 @@
     box-shadow: 3px 4px 13px black;
     border-radius: 7%;
     margin: 2%;
-    padding: 3rem;
+    padding: 2rem;
 }
 
 .card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-button{
+button {
     background-color: blue;
+    color: white;
     border: none;
     padding: 1em 1em;
     border-radius: 4px;
+    margin: auto 2rem;
+    cursor: pointer;
 }
 
-a{
+button:hover {
+    box-shadow: 3px 4px 13px black;
+    transform: scale(1.05);
+}
+
+a {
     text-decoration: none;
     color: white;
+}
+
+.btngroup,
+.btngroup form {
+    display: flex;
 }

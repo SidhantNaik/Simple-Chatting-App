@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>Home</title>
-    
+
 </head>
 
 <body>
-    <h1>This is all chats.</h1> 
+    <h1>This is all chats.</h1>
     <button><a href="chat/new">Send New Message</a></button>
 
     <div class="row">
@@ -31,6 +31,17 @@
                 <div class="msg">
                     <b>Message:</b>
                     <%= chat.msg %> <br><br>
+                </div>
+                <div>
+                    <%= chat.created_at.toString().split(" ").slice(0,4).join(" ") %>
+                </div>
+                <br> <br>
+                    
+                <div class="btngroup">
+                    <form action=" /chat/<%=chat._id%>/edit" method="get">
+                        <button>Edit</button>
+                    </form>
+                   
                 </div>
             </div>
             <%}%>

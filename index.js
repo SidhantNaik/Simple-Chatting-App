@@ -18,7 +18,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/ChattingApp')
 
 
 app.get('/chats', async (req, res) => {
-
     const chats = await Chat.find();
     res.render('home', { chats });
 })
@@ -28,10 +27,25 @@ app.get('/chat/new', (req, res) => {
     res.render("insert");
 })
 
-app.post('/chats', async(req, res) =>{
-    const data =  req.body;
+app.post('/chats', async (req, res) => {
+    const data = req.body;
+    data.created_at = new Date();
     await Chat.insertOne(data)
     res.redirect('/chats');
+})
+
+app.get('/chat/:id/edit', async (req, res) => {
+    const { id } = req.params;
+    const chat = await Chat.findById(id);
+    res.render("edit", { chat });
+})
+
+app.put('/chat', async (req, res) => {
+    const data = req.body;
+    data.created_at = new Date();
+    await Chat.findByIdAndUpdate(data);
+    res.redirect('/chats');
+    alert("Message Edited Succesfully.");
 })
 
 
