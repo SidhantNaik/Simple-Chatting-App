@@ -19,7 +19,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/ChattingApp')
     .catch(ex => { console.log(ex); });
 
 
-
 //Home route to display all messages
 app.get('/chats', async (req, res) => {
     const chats = await Chat.find();
@@ -60,6 +59,11 @@ app.delete('/chat/:id', async (req, res) => {
     await Chat.findByIdAndDelete(id);
     res.redirect('/chats');
 })
+
+//Universal route to display all messages
+app.use((req, res) => {
+    res.redirect('/chats');
+});
 
 app.listen(3000, () => {
     console.log("Server is running at port : 3000");
